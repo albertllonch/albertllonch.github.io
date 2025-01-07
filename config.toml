@@ -1,9 +1,9 @@
 baseURL = 'http://albertllonch.github.io/'
-languageCode = 'en-us'
-title = "Albert's Odyssey"
-theme = "hugo-digital-garden-theme"
+languageCode = 'en'
+title = "Odisea de Albert"
+theme = "nostyleplease"
 themesdir = "./themes"
-copyright = "Albert Llonch de Prado ©"
+defaultContentLanguage = 'es'
 
 [params]
   name = "Albert Llonch"
@@ -21,28 +21,14 @@ copyright = "Albert Llonch de Prado ©"
     link = "www.linkedin.com/in/albert-llonch-de-prado-474ba0120"
     icon = "fab fa-linkedin-in"
 
-[menu]
-  [[menu.main]]
-    name = "Home"
-    url = "/"
-    weight = 1
-  [[menu.main]]
-    name = "Blog"
-    url = "/blog/"
-    weight = 2
-  [[menu.main]]
-    name = "Projects"
-    url = "/projects/"
-    weight = 3
-  [[menu.main]]
-    name = "About"
-    url = "/about/"
-    weight = 4
-
 [taxonomies]
-  blog_tags = 'blog_tags'
-  project_tags = 'project_tags'
+  tags = 'tags'
 
+[languages]
+  [languages.es]
+    title = "Odisea de Albert"
+  [language.en]
+    title = "Albert's Odissey"
 
 [markup]
   defaultMarkdownHandler = 'goldmark'
