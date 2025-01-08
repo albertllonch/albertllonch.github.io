@@ -1,0 +1,32 @@
+[[entries]]
+title = "info"
+
+  [[entries.entries]]
+  title = "about"
+  url = "about"
+
+
+[[entries]]
+title = "posts"
+url = "posts"
+
+  [entries.post_list]
+  limit = 5
+  show_more = true
+  show_more_text = "See archive..."
+  show_more_url = "posts"
+  section = "posts"
+
+[[entries]]
+title = "tags"
+url = "tags"
+
+  [entries.post_list]
+  show_more = true
+  show_more_url = "posts"
+  section = "taxonomy"
+
+[[entries]]
+title = "rss"
+url = "index.xml"
+
