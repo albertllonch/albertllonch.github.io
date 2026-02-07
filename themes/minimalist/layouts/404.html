@@ -1,0 +1,21 @@
+{{ define "main" }}
+<div class="content">
+  <div class="not-found">
+    <h1 class="not-found-title">404</h1>
+    <h2 class="not-found-subtitle">
+      {{ if eq .Site.Language.LanguageCode "es" }}
+      Página no encontrada
+      {{ else }}
+      Page Not Found
+      {{ end }}
+    </h2>
+    <p class="not-found-description">
+      {{ if eq .Site.Language.LanguageCode "es" }}
+      La página que buscas no existe o ha sido movida.
+      {{ else }}
+      The page you're looking for doesn't exist or has been moved.
+      {{ end }}
+    </p>
+  </div>
+</div>
+{{ end }}

@@ -2,9 +2,11 @@
 title: "Post inicial"
 date: 2024-03-27T17:09:16+01:00
 draft: false
+slug: "initial-post"
 tags:
  - random
  - personal
+language: "es"
 ---
 Bienvenido a mi primera entrada en este pequeño espacio de internet. La verdad es que escribo estas primeras líneas sin una idea muy clara de lo que quiero transmitir o comentar, pero creo que eso es lo que caracteriza a un primer post.
 

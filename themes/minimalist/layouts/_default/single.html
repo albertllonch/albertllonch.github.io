@@ -1,0 +1,41 @@
+{{ define "main" }}
+<div class="content">
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">{{ .Title }}</h1>
+      <div class="post-meta">
+        <time datetime="{{ .Date.Format " 2006-01-02" }}">
+          {{ if eq .Site.Language.LanguageCode "es" }}
+          {{ .Date.Format "2 de enero de 2006" }}
+          {{ else }}
+          {{ .Date.Format "January 2, 2006" }}
+          {{ end }}
+        </time>
+        {{ if .Params.tags }}
+        <span class="post-tags">
+          {{ range .Params.tags }}
+          <a href="{{ " /tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+          {{ end }}
+        </span>
+        {{ end }}
+      </div>
+    </header>
+    <div class="post-content">
+      {{ .Content }}
+    </div>
+
+    {{ if .IsTranslated }}
+    <footer class="post-footer">
+      <div class="translation-links">
+        <h4>{{ if eq .Site.Language.LanguageCode "es" }}Otras versiones{{ else }}Other versions{{ end }}:</h4>
+        {{ range .Translations }}
+        <a href="{{ .Permalink }}" class="translation-link">
+          {{ .Language.LanguageName }} {{ if eq .Language.LanguageCode "es" }}(original){{ else }}(translated){{ end }}
+        </a>
+        {{ end }}
+      </div>
+    </footer>
+    {{ end }}
+  </article>
+</div>
+{{ end }}

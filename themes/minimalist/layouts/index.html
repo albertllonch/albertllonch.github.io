@@ -1,0 +1,42 @@
+{{ define "main" }}
+<div class="content">
+  <section class="recent-posts">
+    <h2>{{ if eq .Site.Language.LanguageCode "es" }}Artículos recientes{{ else }}Recent Posts{{ end }}</h2>
+    <div class="posts">
+      {{ $posts := where site.RegularPages "Type" "posts" }}
+      {{ range first 5 $posts }}
+      <article class="post-preview">
+        <header>
+          <h3 class="post-preview-title">
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </h3>
+          <div class="post-preview-meta">
+            <time datetime="{{ .Date.Format " 2006-01-02" }}">
+              {{ if eq .Site.Language.LanguageCode "es" }}
+              {{ .Date.Format "2 de enero de 2006" }}
+              {{ else }}
+              {{ .Date.Format "January 2, 2006" }}
+              {{ end }}
+            </time>
+            {{ if .Params.tags }}
+            <span class="post-preview-tags">
+              {{ range .Params.tags }}
+              <a href="{{ " /tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+              {{ end }}
+            </span>
+            {{ end }}
+          </div>
+        </header>
+      </article>
+      {{ end }}
+    </div>
+    <div class="view-all-posts">
+      <a href="{{ " /posts/" | relLangURL }}">
+        {{ if eq .Site.Language.LanguageCode "es" }}Ver todos los artículos &rarr;{{ else }}View all posts &rarr;{{ end
+        }}
+      </a>
+    </div>
+  </section>
+</div>
+</div>
+{{ end }}

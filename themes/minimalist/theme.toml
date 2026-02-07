@@ -1,0 +1,12 @@
+name = "minimalist"
+license = "MIT"
+licenselink = "https://github.com/albertllonch/minimalist-theme/blob/main/LICENSE"
+description = "just another minimalist, elegant theme for technical blogs"
+homepage = "https://github.com/albertllonch/minimalist-theme"
+tags = ["minimal", "blog", "technical", "clean"]
+features = ["minimal", "responsive", "multilingual"]
+min_version = "0.118.0"
+
+[author]
+  name = "Albert Llonch"
+  homepage = "https://albertllonch.github.io"

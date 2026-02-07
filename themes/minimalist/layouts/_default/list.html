@@ -1,0 +1,55 @@
+{{ define "main" }}
+<div class="content">
+    <header class="page-header">
+        <h1>{{ if .Title }}{{ .Title }}{{ else }}{{ if eq .Site.Language.LanguageCode "es" }}Artículos{{ else }}Posts{{ end }}{{ end }}</h1>
+        {{ if eq .Site.Language.LanguageCode "es" }}
+        <p class="page-description">Todos los artículos técnicos del blog en orden cronológico.</p>
+        {{ else }}
+        <p class="page-description">All technical blog posts in chronological order.</p>
+        {{ end }}
+    </header>
+    
+    <div class="posts">
+        {{ range .Paginator.Pages }}
+        <article class="post-preview">
+            <header>
+                <h2 class="post-preview-title">
+                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                </h2>
+                <div class="post-preview-meta">
+                    <time datetime="{{ .Date.Format "2006-01-02" }}">
+                        {{ if eq .Site.Language.LanguageCode "es" }}
+                            {{ .Date.Format "2 de enero de 2006" }}
+                        {{ else }}
+                            {{ .Date.Format "January 2, 2006" }}
+                        {{ end }}
+                    </time>
+                    {{ if .Params.tags }}
+                    <span class="post-preview-tags">
+                        {{ range .Params.tags }}
+                        <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+                        {{ end }}
+                    </span>
+                    {{ end }}
+                </div>
+            </header>
+        </article>
+        {{ end }}
+    </div>
+    
+    {{ if gt .Paginator.TotalPages 1 }}
+    <nav class="pagination">
+        {{ if .Paginator.HasPrev }}
+        <a href="{{ .Paginator.Prev.URL }}" class="pagination-prev">
+            {{ if eq .Site.Language.LanguageCode "es" }}&larr; Más recientes{{ else }}&larr; Newer{{ end }}
+        </a>
+        {{ end }}
+        {{ if .Paginator.HasNext }}
+        <a href="{{ .Paginator.Next.URL }}" class="pagination-next">
+            {{ if eq .Site.Language.LanguageCode "es" }}Más antiguos &rarr;{{ else }}Older &rarr;{{ end }}
+        </a>
+        {{ end }}
+    </nav>
+    {{ end }}
+</div>
+{{ end }}

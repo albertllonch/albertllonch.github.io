@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
+  {{ $style := resources.Get "css/main.css" | resources.Minify }}
+  <link rel="stylesheet" href="{{ $style.RelPermalink }}">
+  {{ with .OutputFormats.Get "rss" }}
+  <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}">
+  {{ end }}
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="site-nav">
+        <h1 class="site-title">
+          <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+        </h1>
+        {{ $currentPage := . }}
+        {{ range .Site.Menus.main }}
+        {{ $isActive := or (eq .URL $currentPage.RelPermalink) (and (hasPrefix .URL $currentPage.RelPermalink) (ne .URL "/")) }}
+        <a href="{{ .URL }}" {{ if $isActive }}class="active" {{ end }}>{{ .Name }}</a>
+        {{ end }}
+        <div class="language-switcher">
+          {{ if .IsTranslated }}
+          {{ range .Translations }}
+          <a href="{{ .RelPermalink }}" hreflang="{{ .Language.LanguageCode }}" class="lang-link secondary" title="{{ .Language.LanguageName }}">{{ if eq .Language.LanguageCode "es" }}🇪🇸{{ else }}🇺🇸{{ end }}</a>
+          {{ end }}
+          {{ end }}
+          <a href="{{ .Permalink }}" hreflang="{{ .Language.LanguageCode }}" class="lang-link primary" title="{{ .Language.LanguageName }}">{{ if eq .Language.LanguageCode "es" }}🇪🇸{{ else }}🇺🇸{{ end }}</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-content">
+    <div class="container">
+      {{ block "main" . }}{{ end }}
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; {{ now.Year }} {{ .Site.Params.Author | default .Site.Title }}.
+        {{ if eq .Site.Language.LanguageCode "es" }}
+        <a href="mailto:{{ .Site.Params.email | default " albertllonch@gmail.com" }}">Contacto</a> |
+        <span class="lang-indicator">Idioma principal: {{ .Language.LanguageName }}</span>
+        {{ else }}
+        <a href="mailto:{{ .Site.Params.email | default " albertllonch@gmail.com" }}">Contact</a> |
+        <span class="lang-indicator">Translated from: Spanish</span>
+        {{ end }}
+      </p>
+    </div>
+  </footer>
+</body>
+
+</html>

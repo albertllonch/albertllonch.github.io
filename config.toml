@@ -1,34 +1,52 @@
-baseURL = 'http://albertllonch.github.io/'
-languageCode = 'en'
+baseURL = 'https://albertllonch.github.io/'
+languageCode = 'es'
 title = "Odisea de Albert"
-theme = "nostyleplease"
+theme = "minimalist"
 themesdir = "./themes"
 defaultContentLanguage = 'es'
+defaultContentLanguageInSubdir = false
 
 [params]
-  name = "Albert Llonch"
-  description = "Odyssey to singularity"
-  initials = "A"
-  googleAnalytics = ""
+  description = "Blog técnico personal sobre ingeniería de software, programación y tecnología."
+  author = "Albert Llonch"
+  email = "albertllonch@gmail.com"
 
-  [[params.social]]
-    name = "Github"
-    link = "https://github.com/albertllonch"
-    icon = "fab fa-github"
-
-  [[params.social]]
-    name = "LinkedIn"
-    link = "www.linkedin.com/in/albert-llonch-de-prado-474ba0120"
-    icon = "fab fa-linkedin-in"
+[menu]
+  [[menu.main]]
+    name = "posts"
+    url = "/posts/"
+    weight = 10
+  [[menu.main]]
+    name = "about"
+    url = "/about/"
+    weight = 20
+  [[menu.main]]
+    name = "tags"
+    url = "/tags/"
+    weight = 30
 
 [taxonomies]
-  tags = 'tags'
+  tags = 'etiquetas'
+  category = 'categorías'
 
-[languages]
-  [languages.es]
-    title = "Odisea de Albert"
-  [language.en]
-    title = "Albert's Odissey"
+[languages.es]
+  title = "Odisea de Albert"
+  languageCode = "es"
+  languageName = "Español"
+  contentDir = "content/es"
+  weight = 1
+  [languages.es.params]
+    description = "Blog técnico personal sobre ingeniería de software, programación y tecnología."
+
+# English configuration (secondary language)
+[languages.en]
+  title = "Albert Odyssey"
+  languageCode = "en"
+  languageName = "English"
+  contentDir = "content/en"
+  weight = 2
+  [languages.en.params]
+    description = "Personal technical blog about software engineering, programming, and technology."
 
 [markup]
   defaultMarkdownHandler = 'goldmark'
@@ -51,4 +69,5 @@ defaultContentLanguage = 'es'
     typographer = true
   [markup.highlight]
     # Choose from https://xyproto.github.io/splash/docs/all.html
-    style = 'monokailight'
+    style = 'github'
+    lineNos = true

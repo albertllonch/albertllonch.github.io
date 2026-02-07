@@ -1,8 +1,8 @@
 ---
 title: "About"
-date: 2024-03-27T12:11:30+01:00
 summary: "Who is Albert?"
-layout: 'about'
+slug: 'about'
+language: "en"
 ---
 My full name is Albert Llonch. I'm a Spanish software engineer working full time in the software industry. Happily maintaining a relationship for over 7 years now, with a baby on the way.
 
